@@ -1,4 +1,4 @@
-#import "debug.mlh"
+[%%import "debug.mlh"]
 
 open Core_kernel
 
@@ -10,11 +10,11 @@ include Int.Replace_polymorphic_compare
    the production and debug lib, and users can choose to build with the debug library, if
    they suspect they found a bug in incremental. *)
 
-#if JSC_DEBUG
+[%%if JSC_DEBUG]
 let debug = true
-#else
+[%%else]
 let debug = false
-#endif
+[%%endif]
 
 (* All debug messages throughout the code are guarded by [if verbose]. *)
 let verbose = false
@@ -37,7 +37,7 @@ let sexp_of_time_ns_span =
 
 module Time_ns = struct
   include (Time_ns : module type of struct include Time_ns end
-                       with module Span := Time_ns.Span)
+           with module Span := Time_ns.Span)
   let sexp_of_t t = !sexp_of_time_ns t
 
   module Span = struct
@@ -53,10 +53,10 @@ module Array = struct
 
   (* Not defining aliases in production mode, since they break type specialization of
      array accesses. *)
-#if JSC_DEBUG
+  [%%if JSC_DEBUG]
   let unsafe_get = get
   let unsafe_set = set
-#endif
+  [%%endif]
 
   (* Requires [len >= length t]. *)
   let realloc t ~len a =

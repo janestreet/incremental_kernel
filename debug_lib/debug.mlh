@@ -1,1 +1,1 @@
-#let JSC_DEBUG = true
+[%%define JSC_DEBUG true]
