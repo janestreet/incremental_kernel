@@ -359,15 +359,15 @@
     - [Sexp_of] -- interfaces for types that have [with sexp_of].
     - [Should_not_use] -- a type used for lightweight existentials.
     - [Stabilization_num] -- an abstract [int option], used to express the stabilization
-    cycle when something happens.
+      cycle when something happens.
     - [Uopt] -- an unboxed option type.  }
-    {li [Types] -- mutually recursive types.
-    Many of the types used in the implementation are mutually recursive.  They are
-    all defined in [Types].  Each type is then later defined in its own module, along
-    with [with fields, sexp].  }
-    {li [Kind] -- the variant with one constructor for each kind of node, plus a special
-    constructor for invalidated nodes.  Many of the value-carrying variants also have a
-    module for its argument type:
+      {li [Types] -- mutually recursive types.
+      Many of the types used in the implementation are mutually recursive.  They are
+      all defined in [Types].  Each type is then later defined in its own module, along
+      with [with fields, sexp].  }
+      {li [Kind] -- the variant with one constructor for each kind of node, plus a special
+      constructor for invalidated nodes.  Many of the value-carrying variants also have a
+      module for its argument type:
     - [Array_fold]
     - [At]
     - [At_intervals]
@@ -379,19 +379,19 @@
     - [Step_function]
     - [Unordered_array_fold]
     - [Var]  }
-    {li [Scope] -- a packed bind. }
-    {li [Node] -- the main node type. }
-    {li [Internal_observer] }
-    {li [Observer] -- a [ref] wrapper around [Internal_observer], used so a finalizer
-    can detect when user code is done with an observer. }
-    {li [Recompute_heap] }
-    {li [Adjust_heights_heap] }
-    {li [Alarm_value] -- values stored in the timing wheel, for time-based nodes. }
-    {li [State] -- the record type will all data structures used for stabilization, and
-    the implementation of all the [Incremental] functions. }
-    {li [Incremental], the main functor, mostly a wrapper around [State]. }
-    {li [Incremental_unit_tests]. }
-    }
+      {li [Scope] -- a packed bind. }
+      {li [Node] -- the main node type. }
+      {li [Internal_observer] }
+      {li [Observer] -- a [ref] wrapper around [Internal_observer], used so a finalizer
+      can detect when user code is done with an observer. }
+      {li [Recompute_heap] }
+      {li [Adjust_heights_heap] }
+      {li [Alarm_value] -- values stored in the timing wheel, for time-based nodes. }
+      {li [State] -- the record type will all data structures used for stabilization, and
+      the implementation of all the [Incremental] functions. }
+      {li [Incremental], the main functor, mostly a wrapper around [State]. }
+      {li [Incremental_unit_tests]. }
+      }
 *)
 
 open Core_kernel
@@ -985,7 +985,7 @@ module type S_without_times = sig
       an expert node:
 
       - learn when any child changes, so the expert node can update itself incrementally,
-      rather than having to look at the value of all its children.
+        rather than having to look at the value of all its children.
 
       - incrementally update its set of parents.
 
