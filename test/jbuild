@@ -1,6 +1,5 @@
 (library
  ((name incremental_kernel_test)
-  (flags (:standard -safe-string))
   (libraries (incremental_kernel
               expect_test_helpers))
   (preprocess (pps (ppx_jane ppxlib.runner)))))

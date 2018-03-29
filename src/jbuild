@@ -4,7 +4,6 @@
   (libraries (core_kernel))
   (preprocess (pps (ppx_jane -check-doc-comments ppxlib.runner)))
   (preprocessor_deps (debug.mlh))
-  (flags (:standard -safe-string))
 ))
 
 
