@@ -11,5 +11,6 @@ let%expect_test "default timing-wheel precision and level durations" =
       ~alarm_precision:(Timing_wheel_ns.Config.alarm_precision config : Time_ns.Span.t)
       (durations : Time_ns.Span.t list)];
   [%expect {|
-    ((alarm_precision 1.049ms) (durations (17.1799s 1.62891d 52.125d))) |}];
+    ((alarm_precision 1.048576ms)
+     (durations (17.179869184s 1d15h5m37.488355328s 52d2h59m59.627370496s))) |}];
 ;;
