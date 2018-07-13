@@ -7,7 +7,7 @@
 open! Core_kernel
 open! Import
 
-include module type of struct include Types.Alarm_value end
+include module type of struct include Types.Alarm_value end [@remove_aliases]
 
 include Invariant.S with type t := t
 include Sexp_of.S   with type t := t

@@ -7,7 +7,7 @@
 open! Core_kernel
 open! Import
 
-include module type of struct include Types.Internal_observer end
+include module type of struct include Types.Internal_observer end [@remove_aliases]
 
 include Invariant.S1 with type 'a t := 'a t
 include Sexp_of.  S1 with type 'a t := 'a t
