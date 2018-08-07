@@ -2,8 +2,7 @@
    [Incremental.Make].
 
    This module does not have an mli because it would essentially duplicate
-   [Incremental_intf.S], except adding an extra [State.t] argument to functions.
-*)
+   [Incremental.S], except adding an extra [State.t] argument to functions. *)
 
 open Core_kernel
 open Import

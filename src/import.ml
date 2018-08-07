@@ -68,3 +68,8 @@ module Array = struct
     new_t
   ;;
 end
+
+module Uopt = struct
+  include Uopt
+  let unsafe_value = if debug then value_exn else unsafe_value
+end

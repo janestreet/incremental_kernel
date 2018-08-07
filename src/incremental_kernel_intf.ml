@@ -359,8 +359,7 @@
     - [Sexp_of] -- interfaces for types that have [with sexp_of].
     - [Should_not_use] -- a type used for lightweight existentials.
     - [Stabilization_num] -- an abstract [int option], used to express the stabilization
-      cycle when something happens.
-    - [Uopt] -- an unboxed option type.  }
+      cycle when something happens. }
       {li [Types] -- mutually recursive types.
       Many of the types used in the implementation are mutually recursive.  They are
       all defined in [Types].  Each type is then later defined in its own module, along
@@ -1263,7 +1262,7 @@ end
 
 module type S = S_abstract_times with module Time := Time_ns
 
-module type Incremental = sig
+module type Incremental_kernel = sig
 
   module type Incremental_config = Config.Incremental_config
   module type S_abstract_times = S_abstract_times
@@ -1280,6 +1279,27 @@ module type Incremental = sig
   module Make                                      () : S
   module Make_with_config (C : Incremental_config) () : S
 
+  module Incremental : sig
+    module Make = Make
+  end
+  [@@deprecated "[since 2018-06] Use the [Incremental_kernel] library directly."]
+
+  module Incremental_intf : sig
+    module type S = S
+  end
+  [@@deprecated "[since 2018-06] Use [Incremental_kernel.S]."]
+
+  (*_ See the Jane Street Style Guide for an explanation of [Private] submodules:
+
+    https://opensource.janestreet.com/standards/#private-submodules *)
+  module Private : sig
+    module Balanced_reducer = Balanced_reducer
+
+    val debug : bool
+    val verbose : bool
+    val sexp_of_time_ns : (Time_ns.t -> Sexp.t) ref
+    val sexp_of_time_ns_span : (Time_ns.Span.t -> Sexp.t) ref
+  end
 end
 
 
